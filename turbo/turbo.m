@@ -40,9 +40,9 @@ mod_code_bit0=2*X-1;        %Modulating Code Bits using BPSK Modulation
 mod_code_bit1=2*P0-1;
 mod_code_bit2=2*P1-1;
 
-dlg = ProgressDialog();
-dlg.FractionComplete = 0;
-dlg.StatusMessage = sprintf('Encoding completed...');
+% dlg = ProgressDialog();
+% dlg.FractionComplete = 0;
+% dlg.StatusMessage = sprintf('Encoding completed...');
 %% Decoding
 for k = 1:length(SNR)         %Simulation starts here
     R0=sqrt(SNR(k))*mod_code_bit0+randn(1,N);   % Received Codebits Corresponding to input bits
@@ -89,13 +89,13 @@ for k = 1:length(SNR)         %Simulation starts here
         
     end               %One iteration ends here
     u = round(k/length(SNR) * 100);
-    dlg.FractionComplete = k/length(SNR);
-    dlg.StatusMessage = sprintf('%d%% Decoding completed',u);
+    % dlg.FractionComplete = k/length(SNR);
+    % dlg.StatusMessage = sprintf('%d%% Decoding completed',u);
 end
 ber=ber/N;
 figure;
 %% Plots for simulated BER
-dlg.StatusMessage = sprintf('Done!');
+% dlg.StatusMessage = sprintf('Done!');
 semilogy(SNRdB,ber(:,1),'k--','linewidth',2.0);
 hold on
 semilogy(SNRdB,ber(:,2),'m-o','linewidth',2.0);
