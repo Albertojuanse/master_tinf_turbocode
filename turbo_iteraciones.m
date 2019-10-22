@@ -103,6 +103,19 @@ hold on
 semilogy(SNRdB,ber(:,3),'b-<','linewidth',2.0);
 hold on
 semilogy(SNRdB,ber(:,4),'r-<','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,5),'g-<','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,6),'c-<','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,7),'y-<','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,8),'r-s','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,9),'g-s','linewidth',2.0);
+hold on
+semilogy(SNRdB,ber(:,10),'b-s','linewidth',2.0);
+
 %% Theoretical expression for BER for corresponding convolution code
 BER=zeros(1,length(SNR));
 for j=1:10
@@ -111,6 +124,6 @@ end
 semilogy(SNRdB,BER,'c-','linewidth',2.0)
 title('Turbo decoder performance over AWGN channel for BPSK modulated symbols');
 xlabel('SNR(dB)');ylabel('BER');
-legend('1st Iteration','2nd Iteration','3rd Iteration','4th Iteration','Theoretical Bound');
+legend('1st Iteration','2nd Iteration','3rd Iteration','4th Iteration','5th Iteration','6st Iteration','7nd Iteration','8rd Iteration','9th Iteration','10th Iteration','Theoretical Bound');
 grid on
 axis tight
