@@ -9,7 +9,7 @@
 
 %% Parameter declaration
 close all;clear all;clc;
-N=1E3;                          %Block length
+N=1E4;                          %Block length
 X=floor(2*rand(1,N));     	    %Information bit generation
 Interleaver=randperm(N);   	    %Interleaver(random permutation of first N integers)
 SNRdB=0:0.5:9;                  %SNR in dB
@@ -17,10 +17,18 @@ SNR=10.^(SNRdB/10);       	    %SNR in linear scale
 Iteration=10;
 ber=zeros(length(SNR),Iteration);     %Simulated BER(Each column corresponds to one iteration)
 %% Encoding 
-
 X_pi(1:N)=X(Interleaver(1:N));  %Interleaving input bits for RSC-1 encoder
 
-[P0, P1] = RSC_encoder_1(N, X, X_pi, Interleaver); % Encoding
+C1=zeros(1,N);                  %Code Bit for encoder RSC-1
+for i=1:N
+    k = i;
+    while (k >= 1)
+        C1(i) = xor ( C1(i),X_pi(k) );
+        k=k-2;
+    end
+end
+P0 = RSC_encoder_1(X);
+P1 = xor (X_pi,[0,C1(1:end-1)]);
 
 Input_matrix=2*[0,1;0,1;0,1;0,1]-1;            %First column represents input=0 and second column represents input=1
 %Each row represents state 00,10,01 and 11 respectively
