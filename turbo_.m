@@ -9,7 +9,7 @@
 
 %% Parameter declaration
 close all;clear all;clc;
-N=1E5;                          %Block length
+N=1E7;                          %Block length
 X=floor(2*rand(1,N));     	    %Information bit generation
 Interleaver=randperm(N);   	    %Interleaver(random permutation of first N integers)
 SNRdB=0:0.5:9;                  %SNR in dB
